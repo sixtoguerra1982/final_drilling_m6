@@ -1,20 +1,32 @@
 {
   "1": {
-    "nombre": "Super Campeones",
-    "genero": "Futbol",
-    "año": "1982",
-    "autor": "Sixto"
-  },
-  "2": {
-    "nombre": "Super Campeones II",
-    "genero": "Futbol",
-    "año": "1982",
-    "autor": "Oliver"
-  },
-  "3": {
     "nombre": "Akira",
     "genero": "Seinen",
-    "año": "1997",
+    "año": "1988",
     "autor": "Katsuhiro Otomo"
+  },
+  "2": {
+    "nombre": "Dragon Ball",
+    "genero": "Shonen",
+    "año": "1986",
+    "autor": "Akira Toriyama"
+  },
+  "3": {
+    "nombre": "Sailor Moon",
+    "genero": "Shojo",
+    "año": "1992",
+    "autor": "Naoko Takeuchi"
+  },
+  "4": {
+    "nombre": "Naruto",
+    "genero": "Shonen",
+    "año": "2002",
+    "autor": "Masashi Kishimoto"
+  },
+  "5": {
+    "nombre": "Neon Genesis Evangelion",
+    "genero": "Mecha",
+    "año": "1995",
+    "autor": "Yoshiyuki Sadamoto"
   }
 }

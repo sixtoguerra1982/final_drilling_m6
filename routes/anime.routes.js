@@ -52,6 +52,43 @@ router.get("/:id", async (req, res) => {
     }
 });
 
+//traer personaje por NOMBRE READ
+router.get("/nombre/:nombre", async (req, res) => {
+    try {
+
+        let nombre = req.params.nombre
+        let data = await fs.readFile(pathAnime,"utf-8");
+        data = JSON.parse(data);
+
+        let comicBuscado = {};
+
+        let keys = Object.keys(data);
+        for (let k of keys) {
+            if (data[k].nombre.toLowerCase() === nombre.toLowerCase()){
+                comicBuscado = data[k];
+                comicBuscado["id"] = k;
+                break;
+            }
+        }
+
+        if (Object.keys(comicBuscado).length > 0){
+          res.send(comicBuscado);
+        } else {
+            res.status(404).json({
+                code: 404,
+                message: `no existe en la base de datos un personaje con nombre: ${nombre}`,
+            });   
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            code: 500,
+            message: "Error al buscar registro en la DB.",
+        });
+    }
+});
+
 //crear nuevo personaje CREATE
 router.post("/",  async (req, res) => {
     try {
@@ -66,17 +103,15 @@ router.post("/",  async (req, res) => {
         }
 
         let {nombre, genero, año, autor} = req.body
-        if (nombre || genero || año || autor){
+        if (nombre && genero && año && autor){
             let nuevoPersonaje = { nombre, genero, año, autor};
-
-            console.log("nuevo_personaje:",nuevoPersonaje);
 
             data[newId] = nuevoPersonaje;
             await fs.writeFile(pathAnime, JSON.stringify(data,null,2), "utf8");
             
             res.status(201).json({
                 code: 201,
-                message: `Se ha creado con éxito el personaje con ID: ${nuevoPersonaje.id}`,
+                message: `Se ha creado con éxito el personaje con ID: ${newId}`,
                 personaje: nuevoPersonaje,
             });
 
@@ -95,11 +130,11 @@ router.post("/",  async (req, res) => {
     }
 });
 
-//actualizar anime
+//actualizar anime UPDATE
 router.put("/:id", async (req, res) => {
     let id = req.params.id;
     try {
-        let {nombre, genero, año, autor} =  req.body;
+        let {nombre, genero, año, autor} = req.body;
 
         let data = await fs.readFile(pathAnime, "utf-8");
         data = JSON.parse(data);
@@ -107,12 +142,12 @@ router.put("/:id", async (req, res) => {
         let animeBuscado = data[id];
 
         if (animeBuscado){
-
+            // Asignar valores enviados
             animeBuscado.nombre = nombre || animeBuscado.nombre;
             animeBuscado.genero = genero || animeBuscado.genero;
             animeBuscado.año = año || animeBuscado.año;
             animeBuscado.autor = autor || animeBuscado.autor;
-
+            // ****
             await fs.writeFile(pathAnime, JSON.stringify(data, null, 2), "utf8");
 
             res.status(201).json({
@@ -136,6 +171,38 @@ router.put("/:id", async (req, res) => {
         });
     }
 });
+
+// eliminar DELETE
+router.delete("/:id", async (req, res) => {
+    let id = req.params.id;
+    try {
+        let data = await fs.readFile(pathAnime, "utf-8");
+        data = JSON.parse(data);
+
+        let animeBuscado = data[id];
+
+        if (animeBuscado){
+            delete data[id];
+            await fs.writeFile(pathAnime, JSON.stringify(data, null, 2), "utf8");
+            res.send({
+                code: 200,
+                message: "Se ha eliminado con éxito anime con ID: " + id,
+                data: animeBuscado,
+            });
+        } else {
+            res.status(404).json({
+                code: 404,
+                message: `no existe en la base de datos un personaje con el ID: ${id}`,
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            code: 500,
+            message: "Error al eliminar anime con ID: "+ id,
+        });
+    }
+})
 
 
 
