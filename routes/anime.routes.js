@@ -95,6 +95,48 @@ router.post("/",  async (req, res) => {
     }
 });
 
+//actualizar anime
+router.put("/:id", async (req, res) => {
+    let id = req.params.id;
+    try {
+        let {nombre, genero, año, autor} =  req.body;
+
+        let data = await fs.readFile(pathAnime, "utf-8");
+        data = JSON.parse(data);
+
+        let animeBuscado = data[id];
+
+        if (animeBuscado){
+
+            animeBuscado.nombre = nombre || animeBuscado.nombre;
+            animeBuscado.genero = genero || animeBuscado.genero;
+            animeBuscado.año = año || animeBuscado.año;
+            animeBuscado.autor = autor || animeBuscado.autor;
+
+            await fs.writeFile(pathAnime, JSON.stringify(data, null, 2), "utf8");
+
+            res.status(201).json({
+                code: 201,
+                message: `Se ha modificado con éxito el anime con ID: ${id}`,
+                anime: animeBuscado,
+            });
+
+        } else {
+            res.status(404).json({
+                code: 404,
+                message: `no existe en la base de datos un personaje con el ID: ${id}`,
+            });
+        }
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            code: 500,
+            message: "Error al modificar anime con ID: "+ id,
+        });
+    }
+});
+
 
 
 export default router;
