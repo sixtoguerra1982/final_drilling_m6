@@ -1,9 +1,15 @@
 import express from "express";
 const app = express();
 const PORT = 3000;
-//importar rutas para la API /api/v1/anime
+// MODULARIZAR API
 import animeRoutes from "./routes/anime.routes.js";
+//middlewares
+// Utilizar JSON EN CREATE & UPDATE
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+//importar rutas para la API /api/v1/anime
 app.use("/api/v1/anime", animeRoutes);
+
 
 // RUTA RAIZ
 app.get('/', (req, res) => {

@@ -1,0 +1,20 @@
+{
+  "1": {
+    "nombre": "Super Campeones",
+    "genero": "Futbol",
+    "año": "1982",
+    "autor": "Oliver"
+  },
+  "2": {
+    "nombre": "Super Campeones II",
+    "genero": "Futbol",
+    "año": "1982",
+    "autor": "Oliver"
+  },
+  "3": {
+    "nombre": "Akira",
+    "genero": "Seinen",
+    "año": "1988",
+    "autor": "Katsuhiro Otomo"
+  }
+}
