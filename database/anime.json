@@ -6,7 +6,7 @@
     "autor": "Katsuhiro Otomo"
   },
   "2": {
-    "nombre": "Dragon Ball",
+    "nombre": "Nombre Modificado",
     "genero": "Shonen",
     "año": "1986",
     "autor": "Akira Toriyama"
@@ -35,10 +35,10 @@
     "año": "1982",
     "autor": "Oliver"
   },
-  "7": {
-    "nombre": "Super Campeones  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx1",
-    "genero": "Futbol",
-    "año": "1982",
-    "autor": "Oliver"
+  "8": {
+    "nombre": "Caballeros del Zodiaco",
+    "genero": "Batalla",
+    "año": "1990",
+    "autor": "Virgo"
   }
 }
