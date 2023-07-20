@@ -28,9 +28,10 @@ Repositorio Publico: https://github.com/sixtoguerra1982/final_drilling_m6
   "autor": "Oliver"
 }
 ```
-**JSON CONTENT**
 <a href="./END POINTS.postman_collection.json" target="blank" >Postman_Collection</a>
 
+## TEST
+<img src="./test/test.png"></img>
 
 ## Estudiante
 **Sixto Felipe Guerra Urbina**
