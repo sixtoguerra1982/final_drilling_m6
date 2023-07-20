@@ -4,6 +4,7 @@ const PORT = 3000;
 // MODULARIZAR API
 import animeRoutes from "./routes/anime.routes.js";
 //middlewares
+app.use(express.static("./www"));
 // Utilizar JSON EN CREATE & UPDATE
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -13,7 +14,7 @@ app.use("/api/v1/anime", animeRoutes);
 
 // RUTA RAIZ
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+  res.sendFile('index.html');
 });
 
 // RUTA NO ENCONTRADA
