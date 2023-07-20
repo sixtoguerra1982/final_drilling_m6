@@ -1,5 +1,4 @@
 /* Some positioning and ratios */
-@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
 
 .sticky-container {
   max-width: 270px;
@@ -19,13 +18,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  font-family: 'Kalam', cursive;
-  font-size: 1.25rem;
+  box-shadow: 10px 10px 5px -3px rgba(0,0,50,0.41);
+  -webkit-box-shadow: 10px 10px 5px -3px rgba(0,0,50,0.41);
+  -moz-box-shadow: 10px 10px 5px -3px rgba(0,0,50,0.41);
 }
 
 /* Shadow behind the sticky note */
 .sticky:before {
-  box-shadow: -2px 2px 15px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: -2px 2px 15px 0 rgba(20, 20, 20, 0.5);
   background-color: rgba(0, 0, 0, 0.25);
   content: '';
   width: 90%;
@@ -54,38 +54,43 @@
   clip-path: url(#stickyClip);
 }
 
+.loading{
+    border: 4px solid orange;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-right-color: transparent;
+    animation: rot 1s linear infinite;
+}
+
+@keyframes rot {
+    100%{
+        transform: rotate(360deg);
+    }
+    
+}
 
 /* Position the sticky nicely, so it looks better */
 
 .container-inner {
   width: 50%;
   margin: 25px;
-  direction: rtl;
 }
 
 /* Add responsiveness */
 @media screen and (min-width: 640px) {
-  .sticky-content {
-    font-size: 1.5rem;
-  }
   .container-inner {
     width: 50%;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .sticky-content {
-    font-size: 1.5rem;
-  }
   .container-inner {
     width: 50%;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .sticky-content {
-    font-size: 1.875rem;
-  }
   .container-inner {
     width: 25%;
   }

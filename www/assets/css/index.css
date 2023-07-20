@@ -1,9 +1,10 @@
 
 body {
     height: 100%;
+    width: 100%;
     margin: 0;
     background-image: url("../imagen/wp.jpg");
-    background-repeat: round;
+    background-repeat: repeat;
     background-size: contain;
     background-attachment: scroll;
     
@@ -16,7 +17,7 @@ body {
     display: grid;
     grid:
         "header" auto "main" 1fr "footer" auto / 1fr;
-    gap: 8px;
+    gap: 3px;
 }
 
 .header {
@@ -26,6 +27,12 @@ body {
 
 .main {
     grid-area: main;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    gap: 1px;
+    width: 100%;
 }
 
 .footer {
