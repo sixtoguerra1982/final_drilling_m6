@@ -2,7 +2,6 @@ window.addEventListener('load',
     function () {
         setTimeout(async () => {
 
-
             let initialPost = document.getElementById("initial-post-it");
             initialPost.style.display = "none";
 
@@ -12,10 +11,15 @@ window.addEventListener('load',
     }, false);
 
 function chargeAnime() {
-    return new Promise((resolve) => {
-        fetch("/api/v1/anime")
+    return new Promise((resolve,reject) => {
+        try {
+            fetch("/api/v1/anime")
             .then(response => response.json())
-            .then(data => resolve(data));
+            .then(data => resolve(data));    
+        } catch (error) {
+            reject(error);
+        }
+        
     });
 }
 
