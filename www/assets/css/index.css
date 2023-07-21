@@ -16,8 +16,12 @@ body {
 
     display: grid;
     grid:
-        "header" auto "main" 1fr "footer" auto / 1fr;
+        "nav" auto "header" auto "main" 1fr "footer" auto / 1fr;
     gap: 3px;
+}
+
+.nav {
+    grid-area: nav;
 }
 
 .header {
@@ -43,4 +47,8 @@ body {
 .center {
     display: flex;
     justify-content: center;
+}
+
+.ml-30{
+    margin: 15px;
 }

@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/post-it.css">
-    
+    <link rel="stylesheet" href="./assets/css/nav.css">
+    <link rel="stylesheet" href="./assets/css/modal.css">
+
     <title>Final Drilling M6</title>
 </head>
 
 <body>
     <section class="layout">
+        <nav class="nav fixed">
+            <button class="myButton ml-30" id="btn_new" data-modal-target="modal3">Nuevo</button>
+        </nav>
         <div class="header">
             <h1 class="center">Test JavaScript API</h1>
         </div>
@@ -43,6 +48,34 @@
         </div>
         <footer class="footer center"><p>Estudiante : Sixto Felipe Guerra Urbina</p></footer>
     </section>
+
+    <!--  MODAL-->
+    <div class="modal" id="modal3">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h1>New Anime</h1>
+            <form onsubmit="return guardarComic()" method="post" id="comicForm">
+                <label for="nombre">Nombre:</label>
+                <input type="text" name="nombre" id="nombre" required>
+                <br>
+        
+                <label for="genero">Género:</label>
+                <input type="text" name="genero" id="genero" required>
+                <br>
+        
+                <label for="anio">Año:</label>
+                <input type="number" name="anio" id="anio" required>
+                <br>
+        
+                <label for="autor">Autor:</label>
+                <input type="text" name="autor" id="autor" required>
+                <br>
+        
+                <input type="submit" value="Guardar cómic">
+            </form>
+        </div>
+    </div>
+    <!-- ** -->
     <script src="./assets/js/index.js"></script>
 </body>
 
